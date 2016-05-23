@@ -1,4 +1,4 @@
-# deepstream.io-cache-memcached [![npm version](https://badge.fury.io/js/deepstream.io-cache-memcached.svg)](http://badge.fury.io/js/deepstream.io-cache-memcached)
+# deepstream.io-cache-memcached [![Build Status](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached.svg?branch=master)](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached) [![npm version](https://badge.fury.io/js/deepstream.io-cache-memcached.svg)](http://badge.fury.io/js/deepstream.io-cache-memcached)
 A [deepstream.io](http://deepstream.io/) cache connector for [memcached](http://memcached.org/)
 
 This connector uses [the npm memcached package](https://www.npmjs.com/package/memcached). Please have a look there for detailed options.
@@ -15,4 +15,3 @@ server.set( 'cache', new MemcachedConnector({
 
 server.start();
 ```
-
