@@ -4,7 +4,7 @@
   "description": "A deepstream.io cache connector for memcached",
   "main": "src/connector.js",
   "scripts": {
-    "test": "node node_modules/jasmine/bin/jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "repository": {
     "type": "git",
