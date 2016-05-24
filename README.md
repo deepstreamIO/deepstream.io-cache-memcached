@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # deepstream.io-cache-memcached
 
 [![Build Status](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached.svg?branch=master)](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached)
@@ -5,6 +6,10 @@
 [![npm](https://img.shields.io/npm/v/deepstream.io-cache-memcached.svg)](https://www.npmjs.com/package/deepstream.io-cache-memcached)
 [![Dependency Status](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached.svg)](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached)
 [![devDependency Status](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached/dev-status.svg)](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached#info=devDependencies)
+
+
+A [deepstream.io](http://deepstream.io/) cache connector for [memcached](http://memcached.org/)
+>>>>>>> 2852972... add coverall and add badges for npm dependencies
 
 This connector uses [the npm memcached package](https://www.npmjs.com/package/memcached). Please have a look there for detailed options.
 
