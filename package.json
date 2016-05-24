@@ -4,7 +4,8 @@
   "description": "A deepstream.io cache connector for memcached",
   "main": "src/connector.js",
   "scripts": {
-    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "jasmine": "jasmine",
+    "test": "istanbul cover jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,10 @@
     "memcached": "2.2.2"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
     "grunt": "~1.0.1",
     "grunt-release": "0.13.1",
+    "istanbul": "^0.4.3",
     "jasmine": "^2.4.1"
   }
 }
