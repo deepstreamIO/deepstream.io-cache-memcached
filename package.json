@@ -4,24 +4,24 @@
   "description": "A deepstream.io cache connector for memcached",
   "main": "src/connector.js",
   "scripts": {
-    "test": "node node_modules/jasmine-node/lib/jasmine-node/cli.js test --autotest --watch ./src"
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hoxton-one/deepstream.io-cache-memcached.git"
+    "url": "https://github.com/deepstreamIO/deepstream.io-cache-memcached.git"
   },
-  "author": "Wolfram Hempel",
+  "author": "deepstreamHub GmbH",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoxton-one/deepstream.io-cache-memcached/issues"
+    "url": "https://github.com/deepstreamIO/deepstream.io-cache-memcached/issues"
   },
   "homepage": "http://deepstream.io",
   "dependencies": {
-    "memcached": "2.0.0"
+    "memcached": "2.2.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-release": "0.9.0",
-    "jasmine-node": "1.14.5"
+    "jasmine": "^2.4.1"
   }
 }
