@@ -4,7 +4,6 @@
   "description": "A deepstream.io cache connector for memcached",
   "main": "src/connector.js",
   "scripts": {
-    "jasmine": "jasmine",
     "test": "istanbul cover jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "repository": {
