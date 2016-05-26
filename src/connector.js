@@ -1,3 +1,5 @@
+'use strict'
+
 const events = require('events')
 const Memcached = require('memcached')
 const pckg = require('../package.json')
@@ -20,6 +22,7 @@ const pckg = require('../package.json')
  */
 class Connector extends events.EventEmitter {
   constructor(options) {
+    super(options)
     this.isReady = false
     this.name = pckg.name
     this.version = pckg.version
@@ -71,7 +74,6 @@ class Connector extends events.EventEmitter {
         callback(null, null)
         return
       }
-
       callback(null, value)
     })
   }

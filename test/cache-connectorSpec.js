@@ -1,4 +1,4 @@
-/* global describe, it */
+/* global describe, it, beforeEach */
 'use strict'
 
 const expect = require('chai').expect
@@ -9,23 +9,26 @@ const settings = { serverLocation: process.env.MEMCACHED_URL || 'localhost:11211
 describe('the message connector has the correct structure', () => {
   let cacheConnector
 
+  beforeEach(() => {
+    cacheConnector = new CacheConnector(settings)
+  })
+
   it('throws an error if required connection parameters are missing', () => {
     expect(() => { new CacheConnector('gibberish') }).to.throw()
   })
 
   it('creates the cacheConnector', done => {
-    cacheConnector = new CacheConnector(settings)
     expect(cacheConnector.isReady).to.equal(false)
     cacheConnector.on('ready', done)
   })
-  // use strict is unnecessary inside of modules
+
   it('implements the cache/storage connector interface', () => {
-    expect(typeof cacheConnector.name).to.equal('string')
-    expect(typeof cacheConnector.version).to.equal('string')
-    expect(typeof cacheConnector.get).to.equal('function')
-    expect(typeof cacheConnector.set).to.equal('function')
-    expect(typeof cacheConnector.delete).to.equal('function')
-    expect(cacheConnector instanceof EventEmitter).to.equal(true)
+    expect(cacheConnector.name).be.a('string')
+    expect(cacheConnector.version).be.a('string')
+    expect(cacheConnector.get).be.a('function')
+    expect(cacheConnector.set).be.a('function')
+    expect(cacheConnector.delete).be.a('function')
+    expect(cacheConnector instanceof EventEmitter).equal(true)
   })
 
   it('retrieves a non existing value', done => {
