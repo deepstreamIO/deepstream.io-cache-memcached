@@ -4,7 +4,8 @@
   "description": "A deepstream.io cache connector for memcached",
   "main": "src/connector.js",
   "scripts": {
-    "test": "istanbul cover _mocha"
+    "test": "istanbul cover _mocha",
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
     "grunt": "~1.0.1",
     "grunt-release": "0.13.1",
     "istanbul": "^0.4.3",
