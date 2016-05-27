@@ -2,4 +2,5 @@ language: node_js
 node_js:
   - "stable"
   - "4.0"
+script: npm run ci
 after_script: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
