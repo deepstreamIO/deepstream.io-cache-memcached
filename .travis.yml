@@ -1,6 +1,35 @@
 language: node_js
+
+env:
+  global:
+    - CXX=g++-4.8
+    - ARTIFACTS_BUCKET=ds-server-artifacts
+
 node_js:
-  - "stable"
-  - "4.0"
-script: npm run ci
-after_script: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  - "4.4.4"
+
+matrix:
+  include:
+    - node_js: "4.4.4"
+      os: osx
+
+script:
+  - npm run ci
+  - chmod 555 scripts/package.sh && scripts/package.sh
+
+after_script:
+  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+
+addons:
+  artifacts:
+    paths:
+    - $( ls build/*/*.tar.gz )
+    - $( ls build/*/*.zip )
+    target_paths:
+    - $TRAVIS_REPO_SLUG
+
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
