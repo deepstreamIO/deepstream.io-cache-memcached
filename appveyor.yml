@@ -16,8 +16,7 @@ test_script:
 
 # Environment variable needs to change
 environment:
-  REDIS_HOST: 54.93.183.16
-  REDIS_PORT: 6379
+  MEMCACHED_URL: 54.93.77.53:11211
 
 artifacts:
   - path: build\*\*.zip
