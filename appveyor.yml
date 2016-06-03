@@ -30,4 +30,16 @@ deploy:
   bucket: ds-server-artifacts
   folder: $(APPVEYOR_REPO_NAME)
 
+deploy:
+  release: $(APPVEYOR_REPO_TAG_NAME)
+  description: 'Release description'
+  provider: GitHub
+  auth_token:
+    secure: AzK8Q0I0imLpXdHGjXAehk03uWjh40mG0h2/T2mAxDYrrSmJ2tDFLYogj+yu3VJ3
+  artifact: /build\/.*\/deepstream.io-[^-]*-'[^-]*-windows/
+  draft: true
+  on:
+    branch: master
+    appveyor_repo_tag: true
+
 build: off

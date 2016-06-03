@@ -12,8 +12,10 @@ if /I NOT %NODE_VERSION% == %PACKAGED_NODE_VERSION% (
 	EXIT /B
 )
 
-SET FILE_NAME=%PACKAGE_NAME%-%PACKAGE_VERSION%-%COMMIT%-win32
+SET FILE_NAME=%PACKAGE_NAME%-%PACKAGE_VERSION%-%COMMIT%-windows.zip
+SET CLEAN_FILE_NAME=%PACKAGE_NAME%-windows.zip
 ECHO %FILE_NAME%
+
 :: Clean the build directory
 RMDIR /S /Q build
 MKDIR build
@@ -30,13 +32,13 @@ CD %PACKAGE_NAME%
 call npm install --production
 ECHO 'Installed NPM Dependencies'
 
-timeout /t 2 /nobreak > NUL
-
 ECHO 'Creating artificat'
-7z a ../%FILE_NAME%.zip .
+7z a ..\%FILE_NAME% .
+
+CD ..
+COPY %cd%\%FILE_NAME% %cd%\%CLEAN_FILE_NAME%
 
 :: Cleanup
-cd ..
 RMDIR /S /Q %PACKAGE_NAME%
 DEL /Q temp.zip
 
