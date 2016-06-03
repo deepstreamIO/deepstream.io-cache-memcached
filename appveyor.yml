@@ -22,24 +22,24 @@ artifacts:
   - path: build\*\*.zip
 
 deploy:
-  provider: S3
-  access_key_id:
-    secure: cq7lgQP04314hwXwM2l0yiUKRcOkwHeKkDHFULrThxE=
-  secret_access_key:
-    secure: AMUWZVZ4o7lS6f5ogqxTTCqDUR/TYEmPaVXzb7yRRyFUTF/zQFnZHYk1G/j7ie8/
-  bucket: ds-server-artifacts
-  folder: $(APPVEYOR_REPO_NAME)
 
-deploy:
-  release: $(APPVEYOR_REPO_TAG_NAME)
-  description: 'Release description'
-  provider: GitHub
-  auth_token:
-    secure: AzK8Q0I0imLpXdHGjXAehk03uWjh40mG0h2/T2mAxDYrrSmJ2tDFLYogj+yu3VJ3
-  artifact: /build\/.*\/deepstream.io-[^-]*-'[^-]*-windows/
-  draft: true
-  on:
-    branch: master
-    appveyor_repo_tag: true
+  - provider: S3
+    access_key_id:
+      secure: cq7lgQP04314hwXwM2l0yiUKRcOkwHeKkDHFULrThxE=
+    secret_access_key:
+      secure: AMUWZVZ4o7lS6f5ogqxTTCqDUR/TYEmPaVXzb7yRRyFUTF/zQFnZHYk1G/j7ie8/
+    bucket: ds-server-artifacts
+    folder: $(APPVEYOR_REPO_NAME)
+
+  - provider: GitHub
+    release: $(APPVEYOR_REPO_TAG_NAME)
+    description: 'Release description'
+    auth_token:
+      secure: AzK8Q0I0imLpXdHGjXAehk03uWjh40mG0h2/T2mAxDYrrSmJ2tDFLYogj+yu3VJ3
+    artifact: /build\/.*\/deepstream.io-[^-]*-'[^-]*-windows/
+    draft: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
 
 build: off
