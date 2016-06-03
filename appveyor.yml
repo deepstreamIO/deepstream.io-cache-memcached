@@ -1,0 +1,45 @@
+os:
+  - Visual Studio 2015
+
+platform:
+  - x64
+
+install:
+  - ps: Install-Product node 4.4.4
+  - npm install
+
+test_script:
+  - node --version
+  - npm --version
+  - npm test
+  - scripts\package.bat
+
+# Environment variable needs to change
+environment:
+  MEMCACHED_URL: 54.93.77.53:11211
+
+artifacts:
+  - path: build\*\*.zip
+
+deploy:
+
+  - provider: S3
+    access_key_id:
+      secure: cq7lgQP04314hwXwM2l0yiUKRcOkwHeKkDHFULrThxE=
+    secret_access_key:
+      secure: AMUWZVZ4o7lS6f5ogqxTTCqDUR/TYEmPaVXzb7yRRyFUTF/zQFnZHYk1G/j7ie8/
+    bucket: ds-server-artifacts
+    folder: $(APPVEYOR_REPO_NAME)
+
+  - provider: GitHub
+    release: $(APPVEYOR_REPO_TAG_NAME)
+    description: 'Release description'
+    auth_token:
+      secure: AzK8Q0I0imLpXdHGjXAehk03uWjh40mG0h2/T2mAxDYrrSmJ2tDFLYogj+yu3VJ3
+    artifact: /build\/.*\/deepstream.io-[^-]*-'[^-]*-windows/
+    draft: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
+
+build: off

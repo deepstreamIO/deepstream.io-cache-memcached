@@ -1,5 +1,43 @@
 language: node_js
+
+env:
+  global:
+    - CXX=g++-4.8
+    - ARTIFACTS_BUCKET=ds-server-artifacts
+
 node_js:
-  - "stable"
-  - "4.0"
-after_script: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  - "4.4.4"
+
+matrix:
+  include:
+    - node_js: "4.4.4"
+      os: osx
+
+script:
+  - npm run ci
+  - chmod 555 scripts/package.sh && scripts/package.sh
+
+after_script:
+  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Nza9Tduc8r2OUTXf/DVX78mL1OejgpBaOo/nZ1zJxco6v/fXtoHYjfplkqUW/bloZkeS2w88dG5fLreuQkwSQ/Zod6S0An7qTHaJ/sLN1ivVPzGoW+lwI/xvF+w11INpmQzkCQmGmsnnUzDCSyNYGluW+hZdCshpQ6ZWd3hbNKU=
+  file: "$( ls build/*/* | grep '/deepstream.io-[^-]*-'[^-]*-[mac:linux] )"
+  on:
+    tags: true
+
+addons:
+  artifacts:
+    paths:
+    - $( ls build/*/*.tar.gz )
+    - $( ls build/*/*.zip )
+    target_paths:
+    - $TRAVIS_REPO_SLUG
+
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
