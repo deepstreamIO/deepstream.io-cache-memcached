@@ -22,7 +22,7 @@
   "devDependencies": {
     "coveralls": "^2.11.9",
     "grunt": "~1.0.1",
-    "grunt-release": "0.13.1",
+    "grunt-release": "0.14.0",
     "istanbul": "^0.4.3",
     "jasmine": "^2.4.1"
   }
