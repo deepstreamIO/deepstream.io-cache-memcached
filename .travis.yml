@@ -3,7 +3,7 @@ language: node_js
 env:
   global:
     - CXX=g++-4.8
-    - ARTIFACTS_BUCKET=ds-server-artifacts
+    - MEMCACHED_URL=54.93.77.53:11211
 
 node_js:
   - "stable"
@@ -15,11 +15,13 @@ matrix:
       os: osx
 
 script:
-  - npm run ci
-  - chmod 555 scripts/package.sh && scripts/package.sh
+  - npm test
 
 after_script:
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+
+before_deploy:
+  - chmod 555 scripts/package.sh && scripts/package.sh
 
 deploy:
   - provider: s3
