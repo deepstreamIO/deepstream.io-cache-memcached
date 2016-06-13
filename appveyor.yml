@@ -16,7 +16,6 @@ test_script:
   - For /d %%d in ( build\** ) do MOVE %%d %cd%
   - For %%d in ( build\** ) do MOVE %%d %cd%
 
-# Environment variable needs to change
 environment:
   MEMCACHED_URL: 54.93.77.53:11211
 
