@@ -5,7 +5,7 @@
   "main": "src/connector.js",
   "scripts": {
     "test": "mocha",
-    "coverage": "istanbul cover _mocha",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
     "ci": "npm run coverage && npm run lint"
   },
@@ -14,7 +14,7 @@
     "url": "https://github.com/deepstreamIO/deepstream.io-cache-memcached.git"
   },
   "author": "deepstreamHub GmbH",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/deepstreamIO/deepstream.io-cache-memcached/issues"
   },
@@ -25,10 +25,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
-    "eslint": "^1.10.3",
+    "eslint": "^2.11.1",
     "eslint-config-airbnb": "^3.1.0",
-    "grunt": "~1.0.1",
-    "grunt-release": "0.13.1",
     "istanbul": "^0.4.3",
     "mocha": "^2.5.2"
   }

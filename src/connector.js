@@ -13,9 +13,6 @@ const pckg = require('../package.json')
  *
  * lifetime is the default lifetime for objects in seconds (defaults to 1000)
  *
- * @author Wolfram Hempel
- * @copyright 2015 Hoxton One Ltd.
- *
  * @param {Object} options { serverLocation: <mixed>, [lifetime]: <Number>, [memcachedOptions]: <Object> }
  *
  * @constructor

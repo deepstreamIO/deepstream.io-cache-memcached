@@ -11,6 +11,14 @@ A [deepstream.io](http://deepstream.io/) cache connector for [memcached](http://
 This connector uses [the npm memcached package](https://www.npmjs.com/package/memcached). Please have a look there for detailed options.
 
 ##Basic Setup
+```yaml
+plugins:
+  cache:
+    name: memcached
+    options:
+      serverLocation: ${MEMCACHED_URL}
+```
+
 ```javascript
 var Deepstream = require( 'deepstream.io' ),
     MemcachedConnector = require( 'deepstream.io-cache-memcached' ),

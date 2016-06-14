@@ -1,5 +1,5 @@
-/* global describe, it, beforeEach */
 'use strict'
+/* global describe, it, beforeEach */
 
 const expect = require('chai').expect
 const CacheConnector = require('../src/connector')
