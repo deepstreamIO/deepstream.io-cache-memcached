@@ -1,5 +1,5 @@
 environment:
-  MEMCACHED_URL: 54.93.77.53:11211
+  MEMCACHED_URL: 52.59.253.77:11211
 
 # Do not insert any code under here without making sures it's in publishingtest first
 os:
