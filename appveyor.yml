@@ -1,5 +1,5 @@
 environment:
-  MEMCACHED_URL: 52.59.253.77:11211
+  MEMCACHED_URL: 127.0.0.1:11211
 
 # Do not insert any code under here without making sures it's in publishingtest first
 os:
@@ -8,8 +8,12 @@ os:
 platform:
   - x64
 
+services:
+  - memcached
+
 install:
-  - ps: Install-Product node 4.4.5
+  - choco install -y memcached
+  - ps: Install-Product node 6.9.5
   - npm install
 
 test_script:

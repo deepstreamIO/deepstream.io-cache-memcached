@@ -1,7 +1,10 @@
 env:
   global:
     - CXX=g++-4.8
-    - MEMCACHED_URL=52.59.253.77:11211
+    - MEMCACHED_URL=127.0.0.1:11211
+
+services:
+  - memcached
 
 # Do not insert any code under here without making sures it's in publishingtest first
 language: node_js
@@ -15,12 +18,12 @@ plugins:
 
 node_js:
   - "stable"
-  - "4.4.5"
+  - "6.9.5"
 
-matrix:
-  include:
-    - node_js: "4.4.5"
-      os: osx
+# matrix:
+#   include:
+#     - node_js: "6.9.5"
+#       os: osx
 
 script:
   - npm run test
