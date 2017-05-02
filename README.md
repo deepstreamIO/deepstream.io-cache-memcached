@@ -1,5 +1,7 @@
 # deepstream.io-cache-memcached
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/deepstreamIO/deepstream.io-cache-memcached.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached.svg?branch=master)](https://travis-ci.org/deepstreamIO/deepstream.io-cache-memcached)
 [![Coverage Status](https://coveralls.io/repos/github/deepstreamIO/deepstream.io-cache-memcached/badge.svg?branch=master)](https://coveralls.io/github/deepstreamIO/deepstream.io-cache-memcached?branch=master)
 [![npm](https://img.shields.io/npm/v/deepstream.io-cache-memcached.svg)](https://www.npmjs.com/package/deepstream.io-cache-memcached)
