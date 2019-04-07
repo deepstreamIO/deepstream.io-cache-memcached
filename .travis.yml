@@ -1,3 +1,8 @@
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew update   ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew install memcached  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx"  ]]; then brew services start memcached ; fi
+
 env:
   global:
     - CXX=g++-4.8
@@ -19,16 +24,16 @@ plugins:
 node_js:
   - '10'
 
- matrix:
-   include:
-     - node_js: "10"
-       os: osx
-     - node_js: "10"
-        os: linux
+matrix:
+  include:
+    - node_js: "10"
+      os: osx
+    - node_js: "10"
+      os: linux
 
 script:
   - npm run test
-  - curl -o package.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io/connector-submodules/scripts/connector/publish-connector.sh
+  - curl -o package.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io/connector-submodules/scripts/connector/package-connector.sh
   - chmod 555 package.sh
   - ./package.sh
 
