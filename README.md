@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/deepstreamIO/deepstream.io-cache-memcached/badge.svg?branch=master)](https://coveralls.io/github/deepstreamIO/deepstream.io-cache-memcached?branch=master)
 [![npm](https://img.shields.io/npm/v/deepstream.io-cache-memcached.svg)](https://www.npmjs.com/package/deepstream.io-cache-memcached)
 [![Dependency Status](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached.svg)](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached)
-[![devDependency Status](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached/dev-status.svg)](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached#info=devDependencies) 
+[![devDependency Status](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached/dev-status.svg)](https://david-dm.org/deepstreamIO/deepstream.io-cache-memcached#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/deepstreamIO/deepstream.io-cache-memcached.svg)](https://greenkeeper.io/) 
 
 A [deepstream.io](http://deepstream.io/) cache connector for [memcached](http://memcached.org/)
 
