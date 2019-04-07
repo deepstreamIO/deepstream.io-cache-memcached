@@ -1,8 +1,8 @@
-'use strict'
+"use strict";
 
-const events = require('events')
-const Memcached = require('memcached')
-const pckg = require('../package.json')
+const events = require("events");
+const Memcached = require("memcached");
+const pckg = require("../package.json");
 
 /**
  * This class connects deepstream.io to a memcached cache, using the
@@ -19,21 +19,21 @@ const pckg = require('../package.json')
  */
 class Connector extends events.EventEmitter {
   constructor(options) {
-    super(options)
-    this.isReady = false
-    this.name = pckg.name
-    this.version = pckg.version
-    this._options = options
-    this._options.lifetime = options.lifetime || 1000
+    super(options);
+    this.isReady = false;
+    this.name = pckg.name;
+    this.version = pckg.version;
+    this._options = options;
+    this._options.lifetime = options.lifetime || 1000;
 
     if (!this._options.serverLocation) {
-      throw new Error('Missing parameter \'serverLocation\' for memcached connector')
+      throw new Error("Missing parameter 'serverLocation' for memcached connector");
     }
 
-    this._client = new Memcached(this._options.serverLocation, this._options.memcachedOptions || {})
-    this._client.on('failure', this.emit.bind(this, 'error'))
+    this._client = new Memcached(this._options.serverLocation, this._options.memcachedOptions || {});
+    this._client.on("failure", this.emit.bind(this, "error"));
 
-    process.nextTick(this._ready.bind(this))
+    process.nextTick(this._ready.bind(this));
   }
 
   /**
@@ -47,7 +47,7 @@ class Connector extends events.EventEmitter {
    * @returns {void}
    */
   set(key, value, callback) {
-    this._client.set(key, value, this._options.lifetime, this._onResponse.bind(this, callback))
+    this._client.set(key, value, this._options.lifetime, this._onResponse.bind(this, callback));
   }
 
   /**
@@ -63,16 +63,16 @@ class Connector extends events.EventEmitter {
   get(key, callback) {
     this._client.get(key, (err, value) => {
       if (err) {
-        callback(err)
-        return
+        callback(err);
+        return;
       }
 
       if (value === undefined) {
-        callback(null, null)
-        return
+        callback(null, null);
+        return;
       }
-      callback(null, value)
-    })
+      callback(null, value);
+    });
   }
 
   /**
@@ -86,21 +86,21 @@ class Connector extends events.EventEmitter {
    * @returns {void}
    */
   delete(key, callback) {
-    this._client.del(key, this._onResponse.bind(this, callback))
+    this._client.del(key, this._onResponse.bind(this, callback));
   }
 
   _ready() {
-    this.isReady = true
-    this.emit('ready')
+    this.isReady = true;
+    this.emit("ready");
   }
 
   _onResponse(callback, error) {
     if (error) {
-      callback(error)
+      callback(error);
     } else {
-      callback(null)
+      callback(null);
     }
   }
 }
 
-module.exports = Connector
+module.exports = Connector;

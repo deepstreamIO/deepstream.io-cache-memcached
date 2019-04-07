@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha src/",
     "coverage": "nyc mocha src/",
-    "ci": "npm run coverage"
+    "ci": "npm run coverage",
+    "docker": "docker run -p 11211:11211 memcached"
   },
   "repository": {
     "type": "git",
