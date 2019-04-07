@@ -23,9 +23,9 @@
     "memcached": "2.2.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.16",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0"
+    "mocha": "^6.1.0"
   }
 }
