@@ -1,8 +1,5 @@
-'use strict'
-/* global describe, it, beforeEach */
-
 const expect = require('chai').expect
-const CacheConnector = require('../src/connector')
+const CacheConnector = require('./connector')
 const EventEmitter = require('events').EventEmitter
 const settings = { serverLocation: process.env.MEMCACHED_URL || 'localhost:11211' }
 

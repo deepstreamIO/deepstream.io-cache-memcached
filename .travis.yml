@@ -17,35 +17,25 @@ plugins:
     - g++-4.8
 
 node_js:
-  - "stable"
-  - "6.9.5"
+  - '10'
 
-# matrix:
-#   include:
-#     - node_js: "6.9.5"
-#       os: osx
+ matrix:
+   include:
+     - node_js: "10"
+       os: osx
+     - node_js: "10"
+        os: linux
 
 script:
   - npm run test
-  - curl -o package.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io-connector-publishingtest/master/scripts/package.sh
+  - curl -o package.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io/connector-submodules/scripts/connector/publish-connector.sh
   - chmod 555 package.sh
   - ./package.sh
 
 deploy:
-  - provider: s3
-    access_key_id:
-      secure: "j/k/h9AXyi6cHk8fWWVQX+/GNj2mPdYWah9IM0ZGJ7vsVwiFz5uzNgSQYwnIl75cK8R/EECeF0ENotgfSN8oUOgx7cOeVTbFCv9iNMgDJQ9Jla+ygLzCzPh+G/i6+artIsKQvch3pLJgX5d64TjntIAe8WLrYkosbzKLbCt00YA="
-    secret_access_key:
-      secure: "JHQ+9qdpvhTZQtLYJE8EJuEnCA+i6D4p1ceAecYzI9tRcw6lzlr6M7wrcYrGD8CYfIDVw3SUhhUtB7IeGxH6lNeoX7tzVj+usH8nb18AuvP6iz+y1pff4jQy0N+TzTvY0GErJlua2SD7fmPihuiT98lCHshIKIQmqEdas4PwTiM="
-    bucket: ds-server-artifacts
-    skip_cleanup: true
-    acl: public_read
-    local_dir: build
-    upload-dir: $TRAVIS_REPO_SLUG
   - provider: releases
     skip_cleanup: true
-    api_key:
-      secure: "kGTQU70iP0zALcGXGdIvEyY90mC0iG9mRk8Pa0ZBek0ZHLp/4Y0JEO5gLTG8jpisGCFsmKAdIxR2qvaMP2C/48SpVWndLIl8Ktc7JJcQXs8sfRnITYLw40S0/YMMuopNMY1q24px+G/v+eftrdmcfiuYbM5RkKW+hFhzKZTyS1s="
+    api_key: ${GITHUB_TOKEN}
     file_glob: true
     file:
       - "build/*.tar.gz"
@@ -54,7 +44,7 @@ deploy:
       tags: true
 
 after_deploy:
-  - curl -o test.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io-connector-publishingtest/master/scripts/test.sh
+  - curl -o test.sh -L https://raw.githubusercontent.com/deepstreamIO/deepstream.io/connector-submodules/scripts/connector/test-connector.sh
   - chmod 555 test.sh
   - ./test.sh
 
