@@ -5,7 +5,7 @@ import { DeepstreamPlugin, DeepstreamCache, StorageReadCallback, StorageWriteCal
 interface MemcachedOptions {
   serverLocation: string
   lifetime: number
-  memcachedOptions: Memcached.options
+  memcachedOptions?: Memcached.options
 }
 
 /**

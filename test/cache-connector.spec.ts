@@ -6,9 +6,12 @@ describe('the message connector has the correct structure', () => {
   let cacheConnector: CacheConnector
 
   before('creates the cacheConnector', async () => {
+    // @ts-ignore
     cacheConnector = new CacheConnector(config, { logger: {
+      // @ts-ignore
       getNameSpace: () => ({
         fatal: (e: any, m: any) => {
+          // @ts-ignore
           console.error('Fatal exception', e, m)
         },
         warn: () => {}
