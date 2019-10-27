@@ -1,11 +1,14 @@
 {
-  "name": "deepstream.io-cache-memcached",
-  "version": "1.0.0",
+  "name": "@deepstream/cache-memcached",
+  "version": "2.0.0",
   "description": "A deepstream.io cache connector for memcached",
-  "main": "src/connector.js",
+  "main": "dist/src/connector.js",
   "scripts": {
-    "test": "mocha src/",
-    "coverage": "nyc mocha src/",
+    "tsc": "tsc",
+    "lint": "tslint --project .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "mocha --opts mocha.opts 'test/*.spec.ts'",
+    "coverage": "nyc mocha --exit",
     "ci": "npm run coverage",
     "docker": "docker run -p 11211:11211 memcached"
   },
@@ -20,12 +23,19 @@
   },
   "homepage": "http://deepstream.io",
   "dependencies": {
+    "@deepstream/types": "^1.0.3",
     "memcached": "2.2.2"
   },
   "devDependencies": {
+    "@deepstream/protobuf": "^1.0.1",
+    "@types/memcached": "^2.2.6",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.3",
-    "mocha": "^6.1.0",
-    "nyc": "^13.3.0"
+    "coveralls": "^3.0.7",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
   }
 }
